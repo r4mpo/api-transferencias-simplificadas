@@ -1,0 +1,469 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Laravel - Base Perfeita",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/"
+        }
+    ],
+    "paths": {
+        "default": {
+            "options": {
+                "tags": [
+                    "Retorno Padrão"
+                ],
+                "summary": "Retornos padronizados",
+                "description": "Retornos padronizados independente do endpoint.",
+                "operationId": "deaultResponse",
+                "responses": {
+                    "401": {
+                        "description": "401 - Token Inválido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Token invalido."
+                                        },
+                                        "responseCod": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "404 - Rota Não Encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Rota não encontrada."
+                                        },
+                                        "responseCod": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "405 - Método Não Permitido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Método não permitido para esta rota."
+                                        },
+                                        "responseCod": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "500 - Erro Interno do Servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Erro desconhecido."
+                                        },
+                                        "responseCod": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/detalhar": {
+            "get": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Obter detalhar do usuário autenticado",
+                "operationId": "e1cd8f06d03ecbfe99b9ad1af3de3575",
+                "responses": {
+                    "111": {
+                        "description": "detalhar do usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "João"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "joao@email.com"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-04T16:33:44.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-04T16:33:44.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-04T16:33:44.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "333": {
+                        "description": "Credenciais inválidas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "type": "string",
+                                            "example": "Credenciais e/ou sessões inválidas. Tente novamente."
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/usuario/login": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Autenticar usuário e obter token",
+                "operationId": "f72a87b87131c266c5a4b553d854c81c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "joao@email.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "111": {
+                        "description": "Login bem-sucedido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+                                                },
+                                                "id_usuario": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "tipo_token": {
+                                                    "type": "string",
+                                                    "example": "bearer"
+                                                },
+                                                "expira_em": {
+                                                    "type": "integer",
+                                                    "example": 3600
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "333": {
+                        "description": "Credenciais inválidas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "type": "string",
+                                            "example": "Credenciais inválidas. Tente novamente."
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/usuario/logout": {
+            "get": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Fazer logout do usuário",
+                "operationId": "555860832930d3abba8495eb1d0de329",
+                "responses": {
+                    "111": {
+                        "description": "Logout bem-sucedido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "type": "string",
+                                            "example": "Usuário desconectado com sucesso."
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/usuario/registrar": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Registrar um novo usuário",
+                "operationId": "0ffaa0cff400e6b9f3f6d7580b5206d8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "João"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "joao@email.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "111": {
+                        "description": "Usuário cadastrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "properties": {
+                                                "usuario": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "João"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "example": "joao@email.com"
+                                                        },
+                                                        "email_verified_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-03-04T16:33:44.000000Z"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-03-04T16:33:44.000000Z"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-03-04T16:33:44.000000Z"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "333": {
+                        "description": "Erro ao registrar usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "resposta": {
+                                            "type": "string",
+                                            "example": "Erro desconhecido"
+                                        },
+                                        "codigo_resposta": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "Accept": {
+                "name": "Accept",
+                "in": "header",
+                "required": true,
+                "schema": {
+                    "type": "string",
+                    "default": "application/json"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Retorno Padrão",
+            "description": "Retorno Padrão"
+        },
+        {
+            "name": "Autenticação",
+            "description": "Autenticação"
+        }
+    ]
+}

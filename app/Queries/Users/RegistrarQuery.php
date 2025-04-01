@@ -7,7 +7,7 @@ class RegistrarQuery extends DefaultQuery
 {
     public static function getQuery(): string
     {
-        return "INSERT INTO users (name, email, cpf, cnpj, profile, password, email_verified_at, remember_token, created_at, updated_at) 
-            VALUES (:name, :email, :cpf, :cnpj, :profile, :password, :email_verified_at, :remember_token, :created_at, :updated_at);"; 
+        return "INSERT INTO users (name, email, cpf, cnpj, perfil, password, email_verified_at, remember_token, created_at, updated_at) 
+            VALUES (:name, :email, :cpf, :cnpj, :perfil, :password, :email_verified_at, :remember_token, :created_at, :updated_at);"; 
     }
 }

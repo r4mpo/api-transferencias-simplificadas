@@ -13,7 +13,9 @@ namespace App\Swagger\Usuario;
  *             required={"name", "email", "password"},
  *             @OA\Property(property="name", type="string", example="João"),
  *             @OA\Property(property="email", type="string", format="email", example="joao@email.com"),
- *             @OA\Property(property="password", type="string", format="password", example="123456")
+ *             @OA\Property(property="password", type="string", format="password", example="123456"),
+ *             @OA\Property(property="cpf", type="string", nullable=true, example="12345678901"),
+ *             @OA\Property(property="cnpj", type="string", nullable=true, example="12345678000195")
  *         )
  *     ),
  *     @OA\Response(
@@ -27,7 +29,9 @@ namespace App\Swagger\Usuario;
  *                     @OA\Property(property="email", type="string", example="joao@email.com"),
  *                     @OA\Property(property="email_verified_at", type="string", format="date-time", example="2025-03-04T16:33:44.000000Z"),
  *                     @OA\Property(property="created_at", type="string", format="date-time", example="2025-03-04T16:33:44.000000Z"),
- *                     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-03-04T16:33:44.000000Z")
+ *                     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-03-04T16:33:44.000000Z"),
+ *                     @OA\Property(property="cpf", type="string", nullable=true, example="12345678901"),
+ *                     @OA\Property(property="cnpj", type="string", nullable=true, example="12345678000195")
  *                 ),
  *                 @OA\Property(property="token", type="string", example="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...")
  *             ),

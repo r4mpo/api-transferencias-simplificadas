@@ -50,6 +50,7 @@ class RegistrarService extends DefaultService
             'email' => $requisicao['email'],
             'cpf' => $requisicao['cpf'] ?? null,
             'cnpj' => $requisicao['cnpj'] ?? null,
+            'profile' => empty($requisicao['cpf']) ? 2 : 1, // 2: lojistas, 1: usuários
             'password' => $this->codificar_senha($requisicao['password']),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),

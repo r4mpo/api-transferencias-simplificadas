@@ -108,7 +108,7 @@
                     "Autenticação"
                 ],
                 "summary": "Obter detalhar do usuário autenticado",
-                "operationId": "e1cd8f06d03ecbfe99b9ad1af3de3575",
+                "operationId": "e8386739b9d7583a8dba7a80b3b45f43",
                 "responses": {
                     "111": {
                         "description": "detalhar do usuário",
@@ -347,6 +347,16 @@
                                         "type": "string",
                                         "format": "password",
                                         "example": "123456"
+                                    },
+                                    "cpf": {
+                                        "type": "string",
+                                        "example": "12345678901",
+                                        "nullable": true
+                                    },
+                                    "cnpj": {
+                                        "type": "string",
+                                        "example": "12345678000195",
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object"
@@ -391,6 +401,16 @@
                                                             "type": "string",
                                                             "format": "date-time",
                                                             "example": "2025-03-04T16:33:44.000000Z"
+                                                        },
+                                                        "cpf": {
+                                                            "type": "string",
+                                                            "example": "12345678901",
+                                                            "nullable": true
+                                                        },
+                                                        "cnpj": {
+                                                            "type": "string",
+                                                            "example": "12345678000195",
+                                                            "nullable": true
                                                         }
                                                     },
                                                     "type": "object"

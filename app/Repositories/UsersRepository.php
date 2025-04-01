@@ -3,24 +3,24 @@
 namespace App\Repositories;
 
 use App\Models\User;
-use App\Queries\Users\RegistrarQuery;
+use App\Queries\Users\RegisterQuery;
 use Illuminate\Support\Facades\DB;
 
 class UsersRepository
 {
-    public function registrar_db(array $dados): User
+    public function register_db(array $data): User
     {
-        DB::insert(RegistrarQuery::getQuery(), $dados);
-        return $this->obter_ultimo_resultado_db();
+        DB::insert(RegisterQuery::getQuery(), $data);
+        return $this->get_last_result_db();
     }
 
-    private function obter_ultimo_resultado_db(): User
+    private function get_last_result_db(): User
     {
         $id = DB::getPdo()->lastInsertId();
-        return $this->buscar_db($id);
+        return $this->find_db($id);
     }
 
-    private function buscar_db(int $id): User
+    private function find_db(int $id): User
     {
         return User::findOrFail($id);
     }

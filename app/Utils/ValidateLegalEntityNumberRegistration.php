@@ -1,7 +1,7 @@
 <?php
 namespace App\Utils;
 
-class ValidarCnpj
+class ValidateLegalEntityNumberRegistration
 {
     public function validate($attribute, $value, $parameters, $validator): bool
     {

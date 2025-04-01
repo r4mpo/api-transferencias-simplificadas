@@ -4,47 +4,47 @@ namespace App\Services;
 
 use App\DTO\Default\ResponseDTO;
 use App\Helpers\LoggingHelper;
-use App\Helpers\ValidadorCodigoStatusHttp;
+use App\Helpers\HttpStatusCodeValidator;
 
 abstract class DefaultService
 {
-    protected ResponseDTO $resposta_dto;
+    protected ResponseDTO $response_dto;
 
     public function __construct()
     {
-        $this->resposta_dto = new ResponseDTO();
+        $this->response_dto = new ResponseDTO();
     }
 
-    protected function montar_resposta(mixed $dados, mixed $mensagem_personalizada = null, string $mensagem_nao_encontrada): \stdClass
+    protected function standardize_response(mixed $data, mixed $message_personalized = null, string $not_found_message): \stdClass
     {
-        $resposta = new \stdClass();
-        $resposta->codigo_status = $dados ? (request()->method() === "POST" ? 201 : 200) : 404;
-        $resposta->codigo_retorno = $dados ? 111 : 333;
-        $resposta->mensagem = $dados ? ($mensagem_personalizada ?? 'Sucesso na operação.') : $mensagem_nao_encontrada;
+        $response = new \stdClass();
+        $response->status_code = $data ? (request()->method() === "POST" ? 201 : 200) : 404;
+        $response->return_code = $data ? 111 : 333;
+        $response->message = $data ? ($message_personalized ?? 'Sucesso na operação.') : $not_found_message;
 
-        return $resposta;
+        return $response;
     }
 
-    protected function definir_dados_resposta(\stdClass $resposta): void
+    protected function set_response_data(\stdClass $response): void
     {
-        $this->resposta_dto->set_retorno($resposta->mensagem);
-        $this->resposta_dto->set_codigo_retorno($resposta->codigo_retorno);
-        $this->resposta_dto->set_status_code($resposta->codigo_status);
+        $this->response_dto->set_return($response->message);
+        $this->response_dto->set_return_code($response->return_code);
+        $this->response_dto->set_status_code($response->status_code);
     }
 
-    protected function lidar_com_excecao(\Exception $e): void
+    protected function handle_exception(\Exception $e): void
     {
-        $codigo_status = ValidadorCodigoStatusHttp::e_codigo_status_http_valido($e->getCode() ?: 422);
-        $erros = $codigo_status === 422 ? explode(',', $e->getMessage()) : "Erro ao processar a requisição";
+        $status_code = HttpStatusCodeValidator::is_http_status_code_valid($e->getCode() ?: 422);
+        $erros = $status_code === 422 ? explode(',', $e->getMessage()) : "Erro ao processar a requisição";
 
-        $this->resposta_dto->set_retorno($erros);
-        $this->resposta_dto->set_codigo_retorno(333);
-        $this->resposta_dto->set_status_code($codigo_status);
+        $this->response_dto->set_return($erros);
+        $this->response_dto->set_return_code(333);
+        $this->response_dto->set_status_code($status_code);
     }
 
-    protected function dados_resposta(array $requisicao): ResponseDTO
+    protected function response_data(array $request): ResponseDTO
     {
-        LoggingHelper::log_geral($requisicao, $this->resposta_dto);
-        return $this->resposta_dto;
+        LoggingHelper::general_log($request, $this->response_dto);
+        return $this->response_dto;
     }
 }

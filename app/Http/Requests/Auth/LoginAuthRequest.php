@@ -13,11 +13,11 @@ class LoginAuthRequest extends FormRequest
 
     public function rules()
     {
-        $regras_resposta = [
+        $rules_response = [
             "email" => "required|string",
             "password" => "required|string",
         ];
 
-        return $regras_resposta;
+        return $rules_response;
     }
 }

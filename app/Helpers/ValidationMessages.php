@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class MensagensValidacao
+class ValidationMessages
 {
     public function mensagens(): array
     {
@@ -26,13 +26,13 @@ class MensagensValidacao
             'array' => 'O campo :attribute deve ser um Array.',
             'size' => 'O campo :attribute deve ter exatamente :size elemento(s).',
             'gt' => 'O campo :attribute deve ser maior que :value.',
-            'boolean' => 'O campo :attribute deve ser do tipo boolean.',
+            'boolean' => 'O campo :attribute deve ser do type boolean.',
             'json' => 'O campo :attribute deve ser um JSON válido.',
             'mimes' => 'O campo :attribute deve conter um arquivo de formato válido.',
             'integer' => 'O campo :attribute deve ser do formato inteiro.',
             'after_or_equal' => 'O campo :attribute deve ser uma data posterior ou igual a :date.',
-            'cpf' => 'O campo :attribute deve ser um Cadastro Pessoa Física válido.',
-            'cnpj' => 'O campo :attribute deve ser um Cadastro Número Pessoa Jurídica válido.',
+            'individual_registration' => 'O campo :attribute deve ser um Cadastro Pessoa Física válido.',
+            'legal_entity_number_registration' => 'O campo :attribute deve ser um Cadastro Número Pessoa Jurídica válido.',
         ];
     }
 }

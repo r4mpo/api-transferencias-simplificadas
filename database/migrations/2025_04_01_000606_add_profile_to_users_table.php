@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('perfil')->after('cnpj');
+            $table->unsignedBigInteger('profile')->after('legal_entity_number_registration');
         });
     }
 

@@ -5,21 +5,20 @@ namespace App\Services\Auth;
 use App\DTO\Default\ResponseDTO;
 use App\Services\DefaultService;
 
-class LogoutService extends DefaultService
+class ShowService extends DefaultService
 {
-    protected string $not_found_message = 'Erro ao desconectar usuário. Tente novamente.';
+    protected string $not_found_message = 'Credenciais e/ou sessões inválidas. Tente novamente.';
 
     public function __construct()
     {
         parent::__construct();
     }
-
-    public function logout(): ResponseDTO
+    
+    public function show(): ResponseDTO
     {
         try {
-            auth()->logout();
-            $response_db = true;
-            $response = $this->standardize_response($response_db, 'Usuário desconectado com sucesso.', $this->not_found_message);
+            $response_db = auth()->user();
+            $response = $this->standardize_response($response_db, $response_db, $this->not_found_message);
             $this->set_response_data($response);
         } catch (\Exception $e) {
             $this->handle_exception($e);

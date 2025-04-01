@@ -4,12 +4,15 @@ namespace App\DTO\Auth;
 
 use App\DTO\Default\RequestDTO;
 
-class LoginAuthDTO extends RequestDTO
+class RegisterAuthDTO extends RequestDTO
 {
     public function __construct($data)
     {
         $expected_keys = [
+            'name',
             'email',
+            'individual_registration', // cpf
+            'legal_entity_number_registration', // cnpj
             'password'
         ];
 

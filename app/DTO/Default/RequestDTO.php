@@ -4,14 +4,14 @@ namespace App\DTO\Default;
 
 abstract class RequestDTO
 {
-    public function retorno_padrao_dto($chaves_nao_esperadas)
+    public function default_return_dto($unexpected_keys)
     {
-        foreach ($chaves_nao_esperadas as $chave) {
-            $resposta[] = "Chave " . $chave . " não pode ser utilizada.";
+        foreach ($unexpected_keys as $key) {
+            $response[] = "Chave " . $key . " não pode ser utilizada.";
         }
 
-        if (!empty($chaves_nao_esperadas)) {
-            throw new \InvalidArgumentException(implode(',', $resposta));
+        if (!empty($unexpected_keys)) {
+            throw new \InvalidArgumentException(implode(',', $response));
         }
     }
 }

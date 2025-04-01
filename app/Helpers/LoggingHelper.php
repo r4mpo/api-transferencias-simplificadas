@@ -9,20 +9,20 @@ use App\DTO\Default\ResponseDTO;
 
 class LoggingHelper
 {
-    public static function log_geral(Request|array $requisicao, ResponseDTO $response): void
+    public static function general_log(Request|array $requestData, ResponseDTO $response): void
     {
         Log::info(
-            "Requisição:",
+            "Request:",
             [
-                'USUARIO' => Auth::id(),
-                'METODO' => request()->method(),
-                'CAMINHO_REQUISICAO' => request()->path(),
-                'REQUISICAO' => [
+                'USER' => Auth::id(),
+                'METHOD' => request()->method(),
+                'REQUEST_PATH' => request()->path(),
+                'REQUEST' => [
                     'request' => request()
                 ],
-                'RESPOSTA' => [
-                    'resposta' => $response->get_retorno(),
-                    'codigo_resposta' => $response->get_codigo_retorno(),
+                'RESPONSE' => [
+                    'response' => $response->get_return(),
+                    'response_code' => $response->get_return_code(),
                     'status' => $response->get_status_code()
                 ]
             ]

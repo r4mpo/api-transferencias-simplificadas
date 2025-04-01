@@ -102,21 +102,21 @@
                 }
             }
         },
-        "/usuario/detalhar": {
+        "/user/show": {
             "get": {
                 "tags": [
                     "Autenticação"
                 ],
-                "summary": "Obter detalhar do usuário autenticado",
+                "summary": "Obter show do usuário autenticado",
                 "operationId": "e8386739b9d7583a8dba7a80b3b45f43",
                 "responses": {
                     "111": {
-                        "description": "detalhar do usuário",
+                        "description": "show do usuário",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "properties": {
                                                 "id": {
                                                     "type": "integer",
@@ -148,7 +148,7 @@
                                             },
                                             "type": "object"
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 111
                                         }
@@ -164,11 +164,11 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "type": "string",
                                             "example": "Credenciais e/ou sessões inválidas. Tente novamente."
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 333
                                         }
@@ -186,7 +186,7 @@
                 ]
             }
         },
-        "/usuario/login": {
+        "/user/login": {
             "post": {
                 "tags": [
                     "Autenticação"
@@ -226,17 +226,17 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "properties": {
                                                 "token": {
                                                     "type": "string",
                                                     "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
                                                 },
-                                                "id_usuario": {
+                                                "id_user": {
                                                     "type": "integer",
                                                     "example": 1
                                                 },
-                                                "tipo_token": {
+                                                "token_type": {
                                                     "type": "string",
                                                     "example": "bearer"
                                                 },
@@ -247,7 +247,7 @@
                                             },
                                             "type": "object"
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 111
                                         }
@@ -263,11 +263,11 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "type": "string",
                                             "example": "Credenciais inválidas. Tente novamente."
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 333
                                         }
@@ -280,7 +280,7 @@
                 }
             }
         },
-        "/usuario/logout": {
+        "/user/logout": {
             "get": {
                 "tags": [
                     "Autenticação"
@@ -294,11 +294,11 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "type": "string",
                                             "example": "Usuário desconectado com sucesso."
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 111
                                         }
@@ -316,12 +316,12 @@
                 ]
             }
         },
-        "/usuario/registrar": {
+        "/user/register": {
             "post": {
                 "tags": [
                     "Autenticação"
                 ],
-                "summary": "Registrar um novo usuário",
+                "summary": "Register um novo usuário",
                 "operationId": "0ffaa0cff400e6b9f3f6d7580b5206d8",
                 "requestBody": {
                     "required": true,
@@ -348,12 +348,12 @@
                                         "format": "password",
                                         "example": "123456"
                                     },
-                                    "cpf": {
+                                    "individual_registration": {
                                         "type": "string",
                                         "example": "12345678901",
                                         "nullable": true
                                     },
-                                    "cnpj": {
+                                    "legal_entity_number_registration": {
                                         "type": "string",
                                         "example": "12345678000195",
                                         "nullable": true
@@ -371,9 +371,9 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "properties": {
-                                                "usuario": {
+                                                "user": {
                                                     "properties": {
                                                         "id": {
                                                             "type": "integer",
@@ -402,12 +402,12 @@
                                                             "format": "date-time",
                                                             "example": "2025-03-04T16:33:44.000000Z"
                                                         },
-                                                        "cpf": {
+                                                        "individual_registration": {
                                                             "type": "string",
                                                             "example": "12345678901",
                                                             "nullable": true
                                                         },
-                                                        "cnpj": {
+                                                        "legal_entity_number_registration": {
                                                             "type": "string",
                                                             "example": "12345678000195",
                                                             "nullable": true
@@ -422,7 +422,7 @@
                                             },
                                             "type": "object"
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 111
                                         }
@@ -433,16 +433,16 @@
                         }
                     },
                     "333": {
-                        "description": "Erro ao registrar usuário",
+                        "description": "Erro ao register usuário",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "resposta": {
+                                        "response": {
                                             "type": "string",
                                             "example": "Erro desconhecido"
                                         },
-                                        "codigo_resposta": {
+                                        "response_code": {
                                             "type": "integer",
                                             "example": 333
                                         }

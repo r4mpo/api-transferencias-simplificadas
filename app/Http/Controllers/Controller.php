@@ -11,11 +11,11 @@ abstract class Controller
         //
     }
 
-    protected function resposta($resposta_dto): JsonResponse
+    protected function response($response_dto): JsonResponse
     {
         return response()->json(
-            $resposta_dto->to_array(),
-            $resposta_dto->get_status_code()
+            $response_dto->to_array(),
+            $response_dto->get_status_code()
         );
     }
 }

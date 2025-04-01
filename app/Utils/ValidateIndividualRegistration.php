@@ -1,7 +1,7 @@
 <?php
 namespace App\Utils;
 
-class ValidarCpf
+class ValidateIndividualRegistration 
 {
     public function validate($attribute, $value, $parameters, $validator): bool
     {

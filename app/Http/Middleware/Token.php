@@ -9,34 +9,34 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class Token
 {
-    public function handle($requisicao, Closure $proximo): JsonResponse
+    public function handle($request, Closure $next): JsonResponse
     {
-        $dados_resposta = [
-            'resposta' => 'Token inválido.',
-            'codigo_resposta' => 333
+        $data_response = [
+            'response' => 'Token inválido.',
+            'response_code' => 333
         ];
 
         try {
-            $usuario = JWTAuth::parseToken()->authenticate();
+            $user = JWTAuth::parseToken()->authenticate();
 
-            if (!$usuario) {
-                return response()->json($dados_resposta, 401);
+            if (!$user) {
+                return response()->json($data_response, 401);
             }
 
-            $tipo_token = JWTAuth::getPayload()->get('type');
+            $token_type = JWTAuth::getPayload()->get('type');
 
-            if ($tipo_token === 'Refresh' && !$this->rota_recarregar($requisicao)) {
-                return response()->json($dados_resposta, 401);
+            if ($token_type === 'Refresh' && !$this->route_refresh($request)) {
+                return response()->json($data_response, 401);
             }
         } catch (JWTException $e) {
-            return response()->json($dados_resposta, 401);
+            return response()->json($data_response, 401);
         }
 
-        return $proximo($requisicao);
+        return $next($request);
     }
 
-    private function rota_recarregar($requisicao): bool
+    private function route_refresh($request): bool
     {
-        return $requisicao->is('api/usuario/recarregar');
+        return $request->is('api/user/refresh');
     }
 }

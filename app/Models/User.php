@@ -12,8 +12,8 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    const PERFIL_USUARIO = 1;
-    const PERFIL_LOJISTA = 2;
+    const USER_PROFILE = 1;
+    const STORE_OWNER_PROFILE = 2;
     
     /**
      * The attributes that are mass assignable.
@@ -23,8 +23,8 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
-        'cpf',
-        'cnpj',
+        'individual_registration',
+        'legal_entity_number_registration',
         'password',
     ];
 

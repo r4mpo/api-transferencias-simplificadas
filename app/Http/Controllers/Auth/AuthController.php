@@ -3,54 +3,54 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Services\Auth\DetalharService;
+use App\Services\Auth\ShowService;
 use App\Services\Auth\LogoutService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\DTO\Default\ResponseDTO;
-use App\Services\Auth\RegistrarService;
+use App\Services\Auth\RegisterService;
 use App\Services\Auth\LoginService;
 
 class AuthController extends Controller
 {
-    private RegistrarService $registrar_service;
+    private RegisterService $register_service;
     private LoginService $login_service;
-    private DetalharService $detalhar_service;
+    private ShowService $show_service;
     private LogoutService $logout_service;
 
-    private ResponseDTO $resposta_dto;
+    private ResponseDTO $response_dto;
 
-    public function __construct(RegistrarService $registrar_service, LoginService $login_service, DetalharService $detalhar_service, LogoutService $logout_service)
+    public function __construct(RegisterService $register_service, LoginService $login_service, ShowService $show_service, LogoutService $logout_service)
     {
         parent::__construct();
-        $this->resposta_dto = new ResponseDTO();
+        $this->response_dto = new ResponseDTO();
         $this->login_service = $login_service;
         $this->logout_service = $logout_service;
-        $this->detalhar_service = $detalhar_service;
-        $this->registrar_service = $registrar_service;
+        $this->show_service = $show_service;
+        $this->register_service = $register_service;
     }
 
-    public function registrar(Request $requisicao): JsonResponse
+    public function register(Request $request): JsonResponse
     {
-        $this->resposta_dto = $this->registrar_service->registrar($requisicao->all());
-        return $this->resposta($this->resposta_dto);
+        $this->response_dto = $this->register_service->register($request->all());
+        return $this->response($this->response_dto);
     }
 
-    public function login(Request $requisicao): JsonResponse
+    public function login(Request $request): JsonResponse
     {
-        $this->resposta_dto = $this->login_service->login($requisicao->all());
-        return $this->resposta($this->resposta_dto);
+        $this->response_dto = $this->login_service->login($request->all());
+        return $this->response($this->response_dto);
     }
 
-    public function detalhar(): JsonResponse
+    public function show(): JsonResponse
     {
-        $this->resposta_dto = $this->detalhar_service->detalhar();
-        return $this->resposta(resposta_dto: $this->resposta_dto);
+        $this->response_dto = $this->show_service->show();
+        return $this->response(response_dto: $this->response_dto);
     }
 
     public function logout(): JsonResponse
     {
-        $this->resposta_dto = $this->logout_service->logout();
-        return $this->resposta(resposta_dto: $this->resposta_dto);
+        $this->response_dto = $this->logout_service->logout();
+        return $this->response(response_dto: $this->response_dto);
     }
 }

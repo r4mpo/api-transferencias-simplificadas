@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         /*Validations*/
-        Validator::extend('cpf', '\App\Utils\ValidarCpf@validate');
-        Validator::extend('cnpj', '\App\Utils\ValidarCnpj@validate');
+        Validator::extend('individual_registration', '\App\Utils\ValidateIndividualRegistration@validate');
+        Validator::extend('legal_entity_number_registration', '\App\Utils\ValidateLegalEntityNumberRegistration@validate');
     }
 }

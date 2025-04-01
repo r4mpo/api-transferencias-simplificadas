@@ -4,7 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RecarregarAuthRequest extends FormRequest
+class RefreshAuthRequest extends FormRequest
 {
     public function authorize()
     {
@@ -13,10 +13,10 @@ class RecarregarAuthRequest extends FormRequest
 
     public function rules()
     {
-        $regras_resposta = [
-            "type_token" => "required|string|in:Refresh",
+        $rules_response = [
+            "token_type" => "required|string|in:Refresh",
         ];
 
-        return $regras_resposta;
+        return $rules_response;
     }
 }

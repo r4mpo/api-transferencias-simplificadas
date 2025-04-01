@@ -5,14 +5,14 @@ namespace App\DTO\Default;
 class ResponseDTO
 {
     protected $status_code;
-    protected $mensagem;
-    public $codigo_retorno;
+    protected $message;
+    public $return_code;
 
-    public function __construct(int $status_code = 500, $mensagem = 'Erro desconhecido', int $codigo_retorno = 333)
+    public function __construct(int $status_code = 500, $message = 'Erro desconhecido', int $return_code = 333)
     {
         $this->set_status_code($status_code);
-        $this->set_retorno($mensagem);
-        $this->set_codigo_retorno($codigo_retorno);
+        $this->set_return_code($return_code);
+        $this->set_return($message);
     }
 
     public function get_status_code(): int
@@ -20,14 +20,14 @@ class ResponseDTO
         return $this->status_code;
     }
 
-    public function get_retorno()
+    public function get_return()
     {
-        return $this->mensagem;
+        return $this->message;
     }
 
-    public function get_codigo_retorno(): int
+    public function get_return_code(): int
     {
-        return $this->codigo_retorno;
+        return $this->return_code;
     }
 
     public function set_status_code(int $status_code): void
@@ -35,21 +35,21 @@ class ResponseDTO
         $this->status_code = $status_code;
     }
 
-    public function set_retorno($mensagem): void
+    public function set_return($message): void
     {
-        $this->mensagem = $mensagem;
+        $this->message = $message;
     }
 
-    public function set_codigo_retorno(int $codigo_retorno): void
+    public function set_return_code(int $return_code): void
     {
-        $this->codigo_retorno = $codigo_retorno;
+        $this->return_code = $return_code;
     }
 
     public function to_array(): array
     {
         return [
-            'resposta' => $this->get_retorno(),
-            'codigo_resposta' => $this->get_codigo_retorno()
+            'response' => $this->get_return(),
+            'response_code' => $this->get_return_code()
         ];
     }
 }

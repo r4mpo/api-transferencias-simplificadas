@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Swagger\Usuario;
+namespace App\Swagger\User;
 
 /**
  * @OA\Get(
@@ -9,7 +9,7 @@ namespace App\Swagger\Usuario;
  *     tags={"Autenticação"},
  *     security={{"bearerAuth": {}}},
  *     @OA\Response(
- *         response=111,
+ *         response=200,
  *         description="Logout bem-sucedido",
  *         @OA\JsonContent(
  *             @OA\Property(property="response", type="string", example="Usuário desconectado com sucesso."),

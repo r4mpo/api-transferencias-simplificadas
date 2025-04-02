@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Swagger\Usuario;
+namespace App\Swagger\User;
 
 /**
  * @OA\Get(
@@ -9,7 +9,7 @@ namespace App\Swagger\Usuario;
  *     tags={"Autenticação"},
  *     security={{"bearerAuth": {}}},
  *     @OA\Response(
- *         response=111,
+ *         response=200,
  *         description="show do usuário",
  *         @OA\JsonContent(
  *             @OA\Property(property="response", type="object",
@@ -24,7 +24,7 @@ namespace App\Swagger\Usuario;
  *         )
  *     ),
  *     @OA\Response(
- *         response=333,
+ *         response=404,
  *         description="Credenciais inválidas",
  *         @OA\JsonContent(
  *             @OA\Property(property="response", type="string", example="Credenciais e/ou sessões inválidas. Tente novamente."),

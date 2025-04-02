@@ -1,0 +1,835 @@
+{
+	"info": {
+		"_postman_id": "daf6c12f-1862-41fa-a9f3-6a07cd27f6bc",
+		"name": "API Laravel - Transferências Simplificadas",
+		"description": "Esta collection do Postman documenta e facilita a interação com a API de Transferências Financeiras, desenvolvida em Laravel. A API permite a realização de transações financeiras entre usuários comuns e lojistas, garantindo segurança e confiabilidade.\n\n### **Principais Funcionalidades**\n\n✅ Cadastro e autenticação de usuários e lojistas  \n✅ Consulta de saldo e histórico de transações  \n✅ Transferências entre usuários, com validação de regras específicas  \n\n**Regras de Negócio**\n\n- Apenas **usuários comuns** podem enviar dinheiro; lojistas **somente recebem**.\n    \n- As transações são validadas antes de serem processadas.\n    \n- Uma camada de autenticação protege todas as requisições.\n    \n\n### **Tecnologias Utilizadas**\n\n🛠 Laravel (Backend)  \n🛠 MySQL(Banco de Dados)  \n🛠 JWT (Autenticação)\n\nEsta collection inclui todas as requisições organizadas por categorias, facilitando os testes e a integração da API. 🚀",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21910262"
+	},
+	"item": [
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Erick",
+									"description": "Nome do novo usuário",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "erick.cpf@gmail",
+									"description": "Endereço de e-mail do novo usuário",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "aa1234567",
+									"description": "Senha do novo usuário",
+									"type": "text"
+								},
+								{
+									"key": "individual_registration",
+									"value": "47531090031",
+									"description": "CPF do novo usuário",
+									"type": "text"
+								},
+								{
+									"key": "legal_entity_number_registration",
+									"value": "75809741000117",
+									"description": "CNPJ do novo usuário",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}user/register",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Erick",
+											"description": "Nome do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "erick.cnpj@gmail",
+											"description": "Endereço de e-mail do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "aa1234567",
+											"description": "Senha do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "individual_registration",
+											"value": "47531090031",
+											"description": "CPF do novo usuário",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "legal_entity_number_registration",
+											"value": "75809741000117",
+											"description": "CNPJ do novo usuário",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}user/register",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 23:00:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Erick\",\n            \"individual_registration\": null,\n            \"legal_entity_number_registration\": \"75809741000117\",\n            \"profile\": 2,\n            \"email\": \"erick.cnpj@gmail\",\n            \"email_verified_at\": \"2025-04-01T23:00:28.000000Z\",\n            \"created_at\": \"2025-04-01T23:00:28.000000Z\",\n            \"updated_at\": \"2025-04-01T23:00:28.000000Z\"\n        },\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvcmVnaXN0ZXIiLCJpYXQiOjE3NDM1NDg0MjgsImV4cCI6MTc0MzU1MjAyOCwibmJmIjoxNzQzNTQ4NDI4LCJqdGkiOiJDS0plMWNHNm9URVRyQ3hhIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.S_hjORmEy5AyQLtBvg6Af0UFHz1UHgtpdHj_2z6FRBU\"\n    },\n    \"response_code\": 111\n}"
+						},
+						{
+							"name": "201 - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Erick",
+											"description": "Nome do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "erick.cpf@gmail",
+											"description": "Endereço de e-mail do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "aa1234567",
+											"description": "Senha do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "individual_registration",
+											"value": "47531090031",
+											"description": "CPF do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "legal_entity_number_registration",
+											"value": "75809741000117",
+											"description": "CNPJ do novo usuário",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}user/register",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 23:00:51 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"user\": {\n            \"id\": 2,\n            \"name\": \"Erick\",\n            \"individual_registration\": \"47531090031\",\n            \"legal_entity_number_registration\": null,\n            \"profile\": 1,\n            \"email\": \"erick.cpf@gmail\",\n            \"email_verified_at\": \"2025-04-01T23:00:51.000000Z\",\n            \"created_at\": \"2025-04-01T23:00:51.000000Z\",\n            \"updated_at\": \"2025-04-01T23:00:51.000000Z\"\n        },\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvcmVnaXN0ZXIiLCJpYXQiOjE3NDM1NDg0NTEsImV4cCI6MTc0MzU1MjA1MSwibmJmIjoxNzQzNTQ4NDUxLCJqdGkiOiIxTFVNZHhxMzJ5T3AyaHlkIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ooSRdgGJschPpQtyzCiD3CeltnKd3qZknts4HF3yumQ\"\n    },\n    \"response_code\": 111\n}"
+						},
+						{
+							"name": "422 - Validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Erick",
+											"description": "Nome do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "erick.cpf@gmail",
+											"description": "Endereço de e-mail do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "aa1234567",
+											"description": "Senha do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "individual_registration",
+											"value": "47531090031",
+											"description": "CPF do novo usuário",
+											"type": "text"
+										},
+										{
+											"key": "legal_entity_number_registration",
+											"value": "75809741000117",
+											"description": "CNPJ do novo usuário",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}user/register",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 23:01:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": [\n        \"O valor email já está inserido!\",\n        \"O valor individual registration já está inserido!\"\n    ],\n    \"response_code\": 333\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzdWFyaW8vcmVnaXN0cmFyIiwiaWF0IjoxNzQzNDYzOTI2LCJleHAiOjE3NDM0Njc1MjYsIm5iZiI6MTc0MzQ2MzkyNiwianRpIjoieXBnVVd5a2o3ZXg0Y3BLViIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.RggNELebVtOgmWiSauSSC3vdlQRkJkCs8-nXilmdArw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "erick.cpf@gmail",
+									"description": "Endereço de e-mail do usuário",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "aa1234567",
+									"description": "Senha do usuário",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}user/login",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201 - Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "erick.cnpj@gmail",
+											"description": "Endereço de e-mail do usuário",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "aa1234567",
+											"description": "Senha do usuário",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}user/login",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 23:01:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE3NDM1NDg0ODQsImV4cCI6MTc0MzU1MjA4NCwibmJmIjoxNzQzNTQ4NDg0LCJqdGkiOiJIeVdJVFVxUGE2ZnVCQlJRIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ZyDBUoV7PoWxGpxtPQbPXh8DfRLMoGcvv7UpXPhOC24\",\n        \"id_user\": 1,\n        \"token_type\": \"bearer\",\n        \"expira_em\": 3600\n    },\n    \"response_code\": 111\n}"
+						}
+					]
+				},
+				{
+					"name": "Show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE3NDM1NDg0ODQsImV4cCI6MTc0MzU1MjA4NCwibmJmIjoxNzQzNTQ4NDg0LCJqdGkiOiJIeVdJVFVxUGE2ZnVCQlJRIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ZyDBUoV7PoWxGpxtPQbPXh8DfRLMoGcvv7UpXPhOC24",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}user/show",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"show"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}user/show",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"show"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 23:03:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"id\": 1,\n        \"name\": \"Erick\",\n        \"individual_registration\": null,\n        \"legal_entity_number_registration\": \"75809741000117\",\n        \"profile\": 2,\n        \"email\": \"erick.cnpj@gmail\",\n        \"email_verified_at\": \"2025-04-01T23:00:28.000000Z\",\n        \"created_at\": \"2025-04-01T23:00:28.000000Z\",\n        \"updated_at\": \"2025-04-01T23:00:28.000000Z\"\n    },\n    \"response_code\": 111\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE3NDM1NDg0ODQsImV4cCI6MTc0MzU1MjA4NCwibmJmIjoxNzQzNTQ4NDg0LCJqdGkiOiJIeVdJVFVxUGE2ZnVCQlJRIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.ZyDBUoV7PoWxGpxtPQbPXh8DfRLMoGcvv7UpXPhOC24",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}user/logout",
+							"host": [
+								"{{base_url}}user"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "111 - Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}usuario/logout",
+									"host": [
+										"{{base_url}}usuario"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Mar 2025 18:18:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"resposta\": \"Usuário desconectado com sucesso.\",\n    \"codigo_resposta\": 111\n}"
+						},
+						{
+							"name": "333 - Token Inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}usuario/logout",
+									"host": [
+										"{{base_url}}usuario"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Mar 2025 19:01:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"resposta\": \"Token inválido.\",\n    \"codigo_resposta\": 333\n}"
+						},
+						{
+							"name": "200 - Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}user/logout",
+									"host": [
+										"{{base_url}}user"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 01 Apr 2025 23:03:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": \"Usuário desconectado com sucesso.\",\n    \"response_code\": 111\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api/",
+			"type": "string"
+		}
+	]
+}

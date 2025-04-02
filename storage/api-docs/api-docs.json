@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Laravel - Base Perfeita",
+        "title": "API Laravel - Transferências Simplificadas",
         "version": "1.0.0"
     },
     "servers": [
@@ -102,97 +102,13 @@
                 }
             }
         },
-        "/user/show": {
-            "get": {
-                "tags": [
-                    "Autenticação"
-                ],
-                "summary": "Obter show do usuário autenticado",
-                "operationId": "e8386739b9d7583a8dba7a80b3b45f43",
-                "responses": {
-                    "111": {
-                        "description": "show do usuário",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "response": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "name": {
-                                                    "type": "string",
-                                                    "example": "João"
-                                                },
-                                                "email": {
-                                                    "type": "string",
-                                                    "example": "joao@email.com"
-                                                },
-                                                "email_verified_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2025-03-04T16:33:44.000000Z"
-                                                },
-                                                "created_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2025-03-04T16:33:44.000000Z"
-                                                },
-                                                "updated_at": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "example": "2025-03-04T16:33:44.000000Z"
-                                                }
-                                            },
-                                            "type": "object"
-                                        },
-                                        "response_code": {
-                                            "type": "integer",
-                                            "example": 111
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "333": {
-                        "description": "Credenciais inválidas",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "response": {
-                                            "type": "string",
-                                            "example": "Credenciais e/ou sessões inválidas. Tente novamente."
-                                        },
-                                        "response_code": {
-                                            "type": "integer",
-                                            "example": 333
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
         "/user/login": {
             "post": {
                 "tags": [
                     "Autenticação"
                 ],
                 "summary": "Autenticar usuário e obter token",
-                "operationId": "f72a87b87131c266c5a4b553d854c81c",
+                "operationId": "2e0a18c6d64febd3f1aa674e1ab26af6",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -220,7 +136,7 @@
                     }
                 },
                 "responses": {
-                    "111": {
+                    "201": {
                         "description": "Login bem-sucedido",
                         "content": {
                             "application/json": {
@@ -257,7 +173,7 @@
                             }
                         }
                     },
-                    "333": {
+                    "404": {
                         "description": "Credenciais inválidas",
                         "content": {
                             "application/json": {
@@ -286,9 +202,9 @@
                     "Autenticação"
                 ],
                 "summary": "Fazer logout do usuário",
-                "operationId": "555860832930d3abba8495eb1d0de329",
+                "operationId": "6fa8c67a9e2e281b7dbc763395142b91",
                 "responses": {
-                    "111": {
+                    "200": {
                         "description": "Logout bem-sucedido",
                         "content": {
                             "application/json": {
@@ -322,7 +238,7 @@
                     "Autenticação"
                 ],
                 "summary": "Register um novo usuário",
-                "operationId": "0ffaa0cff400e6b9f3f6d7580b5206d8",
+                "operationId": "442cdc09067a762e58f44e1e6b577d5b",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -365,7 +281,7 @@
                     }
                 },
                 "responses": {
-                    "111": {
+                    "201": {
                         "description": "Usuário cadastrado com sucesso",
                         "content": {
                             "application/json": {
@@ -432,7 +348,7 @@
                             }
                         }
                     },
-                    "333": {
+                    "404": {
                         "description": "Erro ao register usuário",
                         "content": {
                             "application/json": {
@@ -453,6 +369,90 @@
                         }
                     }
                 }
+            }
+        },
+        "/user/show": {
+            "get": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Obter show do usuário autenticado",
+                "operationId": "1b402b94297d6ddb8267a1d54dac469a",
+                "responses": {
+                    "200": {
+                        "description": "show do usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "João"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "joao@email.com"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-04T16:33:44.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-04T16:33:44.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2025-03-04T16:33:44.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Credenciais inválidas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Credenciais e/ou sessões inválidas. Tente novamente."
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },

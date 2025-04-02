@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Swagger\Usuario;
+namespace App\Swagger\User;
 
 /**
  * @OA\Post(
@@ -19,7 +19,7 @@ namespace App\Swagger\Usuario;
  *         )
  *     ),
  *     @OA\Response(
- *         response=111,
+ *         response=201,
  *         description="Usuário cadastrado com sucesso",
  *         @OA\JsonContent(
  *             @OA\Property(property="response", type="object",
@@ -39,7 +39,7 @@ namespace App\Swagger\Usuario;
  *         )
  *     ),
  *     @OA\Response(
- *         response=333,
+ *         response=404,
  *         description="Erro ao register usuário",
  *         @OA\JsonContent(
  *             @OA\Property(property="response", type="string", example="Erro desconhecido"),

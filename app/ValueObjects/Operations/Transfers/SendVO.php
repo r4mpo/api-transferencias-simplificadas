@@ -1,35 +1,34 @@
 <?php
 
-namespace App\ValueObjects\Auth;
+namespace App\ValueObjects\Operations\Transfers;
 
-use App\DTO\Auth\RegisterAuthDTO;
+use App\DTO\Operations\Transfers\SendDTO;
 use App\Helpers\ValidationMessages;
-use App\Http\Requests\Auth\RegisterAuthRequest;
+use App\Http\Requests\Operations\Transfers\SendRequest;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
-class RegisterAuthVO
+class SendVO
 {
     protected $value;
-    private $register_auth_request;
+    private $send_request;
     private $validation_messages;
 
     public function __construct($request)
     {
-        $this->register_auth_request = new RegisterAuthRequest();
+        $this->send_request = new SendRequest();
         $this->validation_messages = new ValidationMessages();
-        $this->value = new RegisterAuthDTO($request);
+        $this->value = new SendDTO($request);
         $this->validate($request);
     }
 
-    public function value(): RegisterAuthDTO
+    public function value(): SendDTO
     {
         return $this->value;
     }
 
     protected function validate($request): void
     {
-        $rules = $this->register_auth_request->rules();
+        $rules = $this->send_request->rules();
         $validation_messages = $this->validation_messages->mensagens();
 
         $validacao_rules = Validator::make($request, $rules, $validation_messages);

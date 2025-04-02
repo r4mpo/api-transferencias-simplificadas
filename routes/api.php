@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Operations\TransfersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
@@ -11,3 +12,5 @@ Route::controller(AuthController::class)->prefix('user')->group(function () {
         Route::get('logout', 'logout');
     });
 });
+
+Route::post('transfer', [TransfersController::class, 'send']);

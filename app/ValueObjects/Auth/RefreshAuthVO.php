@@ -19,7 +19,7 @@ class RefreshAuthVO
         $this->refresh_auth_request = new RefreshAuthRequest();
         $this->validation_messages = new ValidationMessages();
         $this->value = new RefreshAuthDTO($request);
-        $this->validar();
+        $this->validate();
     }
 
     public function value()
@@ -27,7 +27,7 @@ class RefreshAuthVO
         return $this->value;
     }
 
-    protected function validar(): void
+    protected function validate(): void
     {
         $data_validacao = ['token_type' => JWTAuth::parseToken()->getPayload()->get('type')];
         $rules = $this->refresh_auth_request->rules();

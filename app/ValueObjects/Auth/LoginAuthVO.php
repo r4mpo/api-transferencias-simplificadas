@@ -19,7 +19,7 @@ class LoginAuthVO
         $this->login_auth_request = new LoginAuthRequest();
         $this->validation_messages = new ValidationMessages();
         $this->value = new LoginAuthDTO($request);
-        $this->validar($request);
+        $this->validate($request);
     }
 
     public function value(): LoginAuthDTO
@@ -27,7 +27,7 @@ class LoginAuthVO
         return $this->value;
     }
 
-    protected function validar($request): void
+    protected function validate($request): void
     {
         $rules = $this->login_auth_request->rules();
         $validation_messages = $this->validation_messages->mensagens();

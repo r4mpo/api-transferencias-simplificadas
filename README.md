@@ -14,7 +14,6 @@ Para garantir uma base de código robusta e modular, o projeto foi inspirado na 
 * **Laravel 12.0.1** ⚡
 * **MySQL** 🛢️
 * **JWT (JSON Web Token) para autenticação** 🔐
-* **Docker para ambiente padronizado** 🐳
 * **Swagger e Postman para documentação da API** 📜
 
 ## Desafios enfrentados 🏆
@@ -76,12 +75,6 @@ Essa estrutura separa claramente as responsabilidades, facilitando a escalabilid
    ```sh
    php artisan serve
    ```
-
-Se estiver usando Docker:
-
-```sh
-docker-compose up -d
-```
 
 ## Documentação da API 📖
 

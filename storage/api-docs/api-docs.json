@@ -102,6 +102,173 @@
                 }
             }
         },
+        "/transfer": {
+            "post": {
+                "tags": [
+                    "Transferências"
+                ],
+                "summary": "Realiza uma transferência entre usuários",
+                "operationId": "c9226ada6718edd37dc5e4ea12a45c7c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "payer",
+                                    "payee",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "payer": {
+                                        "description": "ID do usuário que está enviando o valor",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "payee": {
+                                        "description": "ID do usuário que está recebendo o valor",
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "value": {
+                                        "description": "Valor da transferência em centavos",
+                                        "type": "integer",
+                                        "example": 100
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Transferência realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "properties": {
+                                                "value": {
+                                                    "type": "string",
+                                                    "example": "R$ 1,00"
+                                                },
+                                                "sender": {
+                                                    "type": "string",
+                                                    "example": "Erick"
+                                                },
+                                                "receiver": {
+                                                    "type": "string",
+                                                    "example": "João"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "O campo payer é obrigatório."
+                                            }
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 333
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Erro ao processar a transferência",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "properties": {
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "O serviço externo não autorizou a execução da transferência."
+                                                },
+                                                "response_code": {
+                                                    "type": "integer",
+                                                    "example": 333
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "properties": {
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "Apenas usuários com o respectivo perfil podem executar transferências."
+                                                },
+                                                "response_code": {
+                                                    "type": "integer",
+                                                    "example": 333
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "properties": {
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "Saldo insuficiente para realizar a transferência."
+                                                },
+                                                "response_code": {
+                                                    "type": "integer",
+                                                    "example": 333
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "properties": {
+                                                "response": {
+                                                    "type": "string",
+                                                    "example": "Erro ao notificar pagamento, transferência estornada."
+                                                },
+                                                "response_code": {
+                                                    "type": "integer",
+                                                    "example": 333
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/user/login": {
             "post": {
                 "tags": [
@@ -480,6 +647,10 @@
         {
             "name": "Retorno Padrão",
             "description": "Retorno Padrão"
+        },
+        {
+            "name": "Transferências",
+            "description": "Transferências"
         },
         {
             "name": "Autenticação",

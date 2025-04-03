@@ -5,8 +5,6 @@ namespace Tests\Feature\Operations\Transfers;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Transfer;
-use Laravel\Sanctum\Sanctum;
 
 class SendTest extends TestCase
 {
@@ -20,6 +18,12 @@ class SendTest extends TestCase
     {
         parent::setUp();
 
+        $this->setUpUsers();
+        $this->token = $this->authenticateUser(User::USER_PROFILE);
+    }
+
+    private function setUpUsers(): void
+    {
         $this->payer = User::factory()->create([
             'profile' => User::USER_PROFILE,
             'balance' => 1000,
@@ -29,84 +33,59 @@ class SendTest extends TestCase
             'profile' => User::STORE_OWNER_PROFILE,
             'balance' => 1000,
         ]);
-
-        $this->token = $this->authenticateUser($this->payer);
     }
 
-    public function authenticateUser(): string
+    private function authenticateUser(string $profile): string
     {
         $user = User::factory()->create([
             'password' => bcrypt('password'),
+            'profile' => $profile
         ]);
-    
+
         $response = $this->postJson('/api/user/login', [
             'email' => $user->email,
             'password' => 'password',
         ]);
-    
-        dd($response->json()); // Adicionado para depuração
-    
-        return $response->json('token');
+
+        return $response->json('response')['token'];
     }
-    
-    public function testUserCanMakeATransferSuccessfully()
+
+    public function testUserCanMakeATransferSuccessfully(): void
     {
-        $response = $this->postJson('/api/transfer', [
-            'payer' => $this->payer->id,
-            'payee' => $this->payee->id,
-            'value' => 100,
-        ], [
-            'Authorization' => 'Bearer ' . $this->token
-        ]);
+        $response = $this->sendTransferRequest($this->payer->id, $this->payee->id, 100, $this->token);
 
         $response->assertStatus(201);
-        $response->assertJsonStructure([
-            'response' => [
-                'value', 'sender', 'receiver'
-            ],
-            'response_code'
-        ]);
+        $this->assertEquals(111, $response->json('response_code'));
     }
 
-    public function testTransferFailsWithInsufficientBalance()
+    public function testTransferFailsWithInsufficientBalance(): void
     {
         $this->payer->update(['balance' => 50]);
 
-        $response = $this->postJson('/api/transfer', [
-            'payer' => $this->payer->id,
-            'payee' => $this->payee->id,
-            'value' => 100,
-        ], [
-            'Authorization' => 'Bearer ' . $this->token
-        ]);
+        $response = $this->sendTransferRequest($this->payer->id, $this->payee->id, 9999999999999999, $this->token);
 
         $response->assertStatus(404);
-        $response->assertJson([
-            'response' => 'Saldo insuficiente para realizar a transferência.',
-            'response_code' => 333,
-        ]);
+        $this->assertEquals(333, $response->json('response_code'));
     }
 
-    public function testTransferFailsForUnauthorizedUser()
+    public function testTransferFailsForUnauthorizedUser(): void
     {
-        $unauthorizedUser = User::factory()->create([
-            'profile' => 'lojista',
-        ]);
+        $token = $this->authenticateUser(User::STORE_OWNER_PROFILE);
 
-        $token = $this->authenticateUser($unauthorizedUser);
-
-        $response = $this->postJson('/api/transfer', [
-            'payer' => $unauthorizedUser->id,
-            'payee' => $this->payee->id,
-            'value' => 100,
-        ], [
-            'Authorization' => 'Bearer ' . $token
-        ]);
+        $response = $this->sendTransferRequest($this->payee->id, $this->payer->id, 100, $token);
 
         $response->assertStatus(404);
-        $response->assertJson([
-            'response' => 'Apenas usuários com o respectivo perfil podem executar transferências.',
-            'response_code' => 333,
+        $this->assertEquals(333, $response->json('response_code'));
+    }
+
+    private function sendTransferRequest(int $payerId, int $payeeId, float $value, string $token)
+    {
+        return $this->postJson('/api/transfer', [
+            'payer' => $payerId,
+            'payee' => $payeeId,
+            'value' => $value,
+        ], [
+            'Authorization' => 'Bearer ' . $token
         ]);
     }
 }

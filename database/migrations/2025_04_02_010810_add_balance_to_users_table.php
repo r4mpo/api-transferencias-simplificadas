@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Armazenamos o valor em centavos, para facilitar a conversão e operações matemáticas
-            $table->unsignedBigInteger('balance')->after('profile')->default(0);
+            $table->unsignedBigInteger('balance')->after('profile')->default(100000);
         });
     }
 

@@ -9,8 +9,8 @@ class SendDTO extends RequestDTO
     public function __construct($data)
     {
         $expected_keys = [
-            'sender_id',
-            'receiver_id',
+            'payer',
+            'payee',
             'value',
         ];
         

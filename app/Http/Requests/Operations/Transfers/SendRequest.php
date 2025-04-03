@@ -14,8 +14,8 @@ class SendRequest extends FormRequest
     public function rules()
     {
         $rules_response = [
-            'sender_id' => 'required|exists:users,id|different:receiver_id',
-            'receiver_id' => 'required|exists:users,id',
+            'payer' => 'required|exists:users,id|different:payee',
+            'payee' => 'required|exists:users,id',
             'value' => 'required|integer|min:1',
         ];
 

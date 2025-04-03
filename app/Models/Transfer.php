@@ -16,4 +16,15 @@ class Transfer extends Model
     const STATUS_PENDING = 1;
     const STATUS_COMPLETE = 2;
     const STATUS_FAIL = 3;
+    const STATUS_EMAIL_NOT_SEND = 4;
+
+    public function sender()
+    {
+        return $this->belongsTo(User::class, 'id', 'sender_id');
+    }
+    
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'id', 'receiver_id');
+    }
 }

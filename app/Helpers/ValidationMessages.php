@@ -33,6 +33,7 @@ class ValidationMessages
             'after_or_equal' => 'O campo :attribute deve ser uma data posterior ou igual a :date.',
             'individual_registration' => 'O campo :attribute deve ser um Cadastro Pessoa Física válido.',
             'legal_entity_number_registration' => 'O campo :attribute deve ser um Cadastro Número Pessoa Jurídica válido.',
+            'different' => 'O campo :attribute deve ser diferente de :other.'
         ];
     }
 }

@@ -14,14 +14,19 @@ class UsersRepository
         return $this->get_last_result_db();
     }
 
+    public function find_db(int $id): User
+    {
+        return User::findOrFail($id);
+    }
+
     private function get_last_result_db(): User
     {
         $id = DB::getPdo()->lastInsertId();
         return $this->find_db($id);
     }
 
-    private function find_db(int $id): User
+    public function alter_db(User $user, array $data): void 
     {
-        return User::findOrFail($id);
+        $user->update($data);
     }
 }

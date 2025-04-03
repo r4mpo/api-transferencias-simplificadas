@@ -10,4 +10,9 @@ class TransfersRepository
     {
         return Transfer::create($data);
     }
+
+    public function alter_db(Transfer $transfer, array $data): void
+    {
+        $transfer->update($data);
+    }
 }

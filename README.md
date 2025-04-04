@@ -1,4 +1,3 @@
-erick agostinho (@r4mpo) - 2025
 
 # API Transferências - Desafio Backend **🚀**
 
@@ -15,7 +14,7 @@ Para garantir uma base de código robusta e modular, o projeto foi inspirado na 
 * **MySQL** 🛢️
 * **JWT (JSON Web Token) para autenticação** 🔐
 * **Swagger e Postman para documentação da API** 📜
-* **PHPUnit** **para Testes Automatizados** ⚙️
+* **PHPUnit para Testes Automatizados** ⚙️
 
 ## Desafios enfrentados 🏆
 
@@ -37,7 +36,7 @@ app/
 ├── Http/
 │   ├── Controllers/    # Controladores da API
 │   ├── Middleware/     # Middlewares de autenticação e segurança
-│   ├── Requests/	# Validam informações de formulários
+│   ├── Requests/       # Validam informações de formulários
 ├── Interfaces/         # Possibilitam templates padronizados para scripts
 ├── Models/             # Modelos do Eloquent
 ├── Queries/            # Armazenam queries mais complexas
@@ -45,7 +44,7 @@ app/
 ├── Services/           # Regras de negócio encapsuladas
 ├── Swagger/            # Comentários de Documentação da API
 ├── ValueObjects/       # Objetos de valor utilizados nas operações
-├── Utils/             	# Validações de tipos específicos de dados
+├── Utils/              # Validações de tipos específicos de dados
 ```
 
 Essa estrutura separa claramente as responsabilidades, facilitando a escalabilidade e a manutenibilidade do projeto. 🚀
@@ -113,9 +112,21 @@ php artisan test
 
 * `POST /transfer` - Realizar uma transferência entre usuários
 
-### Estrato 📋
+### Extrato 📋
 
-* `GET /stratum` - Consulta histórico de transações do usuário logado
+* `GET /stratuns` - Consulta histórico de transações do usuário logado
+
+## Considerações técnicas ✍️
+
+Durante o desenvolvimento do projeto, adotei uma série de boas práticas que considero fundamentais em aplicações modernas:
+
+* **Desacoplamento de funções** : Priorizei o desacoplamento entre responsabilidades por meio do uso de serviços, repositórios, interfaces e objetos de valor (Value Objects), garantindo uma estrutura coesa, testável e de fácil manutenção.
+* **Escolha do Laravel** : Utilizei o Laravel como framework principal por ser o mais popular e consolidado no ecossistema PHP. Sua ampla documentação, comunidade ativa e integração com ferramentas modernas o tornam ideal para projetos robustos.
+* **Validações criteriosas** : Implementei validações rigorosas em requests, serviços e regras de negócio para assegurar que apenas dados consistentes fossem processados ao longo da aplicação.
+* **Segurança no endpoint de transferências** : Como sugestão de melhoria à especificação proposta na atividade, recomendo que o campo `payer` não seja enviado no corpo da requisição. Em vez disso, o próprio back-end deve inferir o `payer` a partir do usuário autenticado via JWT. Essa abordagem mitiga riscos de fraudes e evita transferências em nome de terceiros.
+* **Código limpo e organizado** : Busquei manter o código limpo, legível e modular, com atenção especial à estruturação de diretórios e à separação clara de responsabilidades.
+* **Criação de endpoint complementar `/stratuns`** : Como extensão do desafio, desenvolvi um endpoint adicional que permite ao usuário autenticado consultar seu extrato detalhado, incluindo informações de status, tipo de operação (pagou ou recebeu) e valores. Essa funcionalidade oferece maior transparência ao histórico financeiro do usuário.
+* **Cobertura de testes automatizados** : Ambos os endpoints principais foram devidamente cobertos por testes automatizados utilizando PHPUnit, reforçando a confiabilidade da aplicação.
 
 ## Conclusão 🎯
 
@@ -124,3 +135,5 @@ Este projeto demonstra a capacidade de construir uma API segura, performática e
 ---
 
 Caso tenha dúvidas ou sugestões, sinta-se à vontade para contribuir! 💡✨
+
+*erick agostinho (@r4mpo) - 2025*

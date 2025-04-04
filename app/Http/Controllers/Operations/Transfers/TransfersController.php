@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Operations;
+namespace App\Http\Controllers\Operations\Transfers;
 
 use App\DTO\Default\ResponseDTO;
 use App\Http\Controllers\Controller;

@@ -1,6 +1,6 @@
 erick agostinho (@r4mpo) - 2025
 
-# API Transferências - Desafio Backend
+# API Transferências - Desafio Backend **🚀**
 
 ## Sobre o projeto 💡
 
@@ -15,6 +15,7 @@ Para garantir uma base de código robusta e modular, o projeto foi inspirado na 
 * **MySQL** 🛢️
 * **JWT (JSON Web Token) para autenticação** 🔐
 * **Swagger e Postman para documentação da API** 📜
+* **PHPUnit** **para Testes Automatizados** ⚙️
 
 ## Desafios enfrentados 🏆
 
@@ -36,10 +37,15 @@ app/
 ├── Http/
 │   ├── Controllers/    # Controladores da API
 │   ├── Middleware/     # Middlewares de autenticação e segurança
+│   ├── Requests/	# Validam informações de formulários
+├── Interfaces/         # Possibilitam templates padronizados para scripts
 ├── Models/             # Modelos do Eloquent
+├── Queries/            # Armazenam queries mais complexas
 ├── Repositories/       # Camada de acesso ao banco de dados
 ├── Services/           # Regras de negócio encapsuladas
+├── Swagger/            # Comentários de Documentação da API
 ├── ValueObjects/       # Objetos de valor utilizados nas operações
+├── Utils/             	# Validações de tipos específicos de dados
 ```
 
 Essa estrutura separa claramente as responsabilidades, facilitando a escalabilidade e a manutenibilidade do projeto. 🚀
@@ -78,7 +84,7 @@ Essa estrutura separa claramente as responsabilidades, facilitando a escalabilid
 
 ## Documentação da API 📖
 
-A API foi documentada usando Swagger. Para acessar a documentação, basta rodar o projeto e acessar:
+O projeto foi documentado utilizando Postman e Swagger. Para acessar a collection, basta verificar o arquivo em ./collection. E para acessar a documentação, basta rodar o projeto e acessar:
 
 ```
 http://localhost:8000/api/documentation
@@ -106,6 +112,10 @@ php artisan test
 ### Transferências 💰
 
 * `POST /transfer` - Realizar uma transferência entre usuários
+
+### Estrato 📋
+
+* `GET /stratum` - Consulta histórico de transações do usuário logado
 
 ## Conclusão 🎯
 

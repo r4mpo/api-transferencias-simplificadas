@@ -102,10 +102,111 @@
                 }
             }
         },
+        "/stratuns": {
+            "get": {
+                "tags": [
+                    "Operações"
+                ],
+                "summary": "Obter status das transferências do usuário",
+                "operationId": "35dd70bcac2f5cd70032d49eca2fbfa7",
+                "responses": {
+                    "200": {
+                        "description": "Lista de transferências pagas pelo usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "properties": {
+                                                "paid": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string",
+                                                                "example": "R$ 1,00"
+                                                            },
+                                                            "sender": {
+                                                                "type": "string",
+                                                                "example": "Erick"
+                                                            },
+                                                            "receiver": {
+                                                                "type": "string",
+                                                                "example": "Erick"
+                                                            },
+                                                            "status": {
+                                                                "type": "string",
+                                                                "example": "Complete"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 111
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na requisição",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Erro ao buscar as transferências."
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 400
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Estrato não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "response": {
+                                            "type": "string",
+                                            "example": "Houve um erro na localização do estrato."
+                                        },
+                                        "response_code": {
+                                            "type": "integer",
+                                            "example": 404
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/transfer": {
             "post": {
                 "tags": [
-                    "Transferências"
+                    "Operações"
                 ],
                 "summary": "Realiza uma transferência entre usuários",
                 "operationId": "c9226ada6718edd37dc5e4ea12a45c7c",
@@ -649,8 +750,8 @@
             "description": "Retorno Padrão"
         },
         {
-            "name": "Transferências",
-            "description": "Transferências"
+            "name": "Operações",
+            "description": "Operações"
         },
         {
             "name": "Autenticação",

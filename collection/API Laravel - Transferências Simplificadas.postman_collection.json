@@ -803,637 +803,707 @@
 			]
 		},
 		{
-			"name": "Transfers",
+			"name": "Operations",
 			"item": [
 				{
-					"name": "Send",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
+					"name": "Stratuns",
+					"item": [
+						{
+							"name": "Find",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE3NDM3MjgyNzAsImV4cCI6MTc0MzczMTg3MCwibmJmIjoxNzQzNzI4MjcwLCJqdGkiOiJCTW5wWXFQWXlRVEtwTzRqIiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.P3pFoR-h0lvAKTz53KYczZO7Ak6YeQ-sw5IM2aK_CuY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}stratuns",
+									"host": [
+										"{{base_url}}stratuns"
+									]
+								}
+							},
+							"response": [
 								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvcmVnaXN0ZXIiLCJpYXQiOjE3NDM2MzkzNDQsImV4cCI6MTc0MzY0Mjk0NCwibmJmIjoxNzQzNjM5MzQ0LCJqdGkiOiJTaWZvckdkbEk4NFpZWWlzIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.fEScSxT8VwrMmFfFf6VtXhevax1Cke7Kyzmo9t9kyqE",
-									"type": "string"
+									"name": "200 - Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}stratuns",
+											"host": [
+												"{{base_url}}stratuns"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 03 Apr 2025 23:25:11 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": {\n        \"paid\": [\n            {\n                \"value\": \"R$ 1,00\",\n                \"sender\": \"Erick\",\n                \"receiver\": \"Erick\",\n                \"status\": \"Complete\"\n            },\n            {\n                \"value\": \"R$ 1,00\",\n                \"sender\": \"Erick\",\n                \"receiver\": \"Erick\",\n                \"status\": \"Notification error\"\n            }\n        ]\n    },\n    \"response_code\": 111\n}"
+								},
+								{
+									"name": "200 - Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}stratuns",
+											"host": [
+												"{{base_url}}stratuns"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 04 Apr 2025 00:59:54 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": \"Não há nenhuma transferência cadastrada.\",\n    \"response_code\": 111\n}"
 								}
 							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "payer",
-									"value": "2",
-									"type": "text"
-								},
-								{
-									"key": "payee",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "value",
-									"value": "100",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{base_url}}transfer",
-							"host": [
-								"{{base_url}}transfer"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "422 - Validation",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Unprocessable Content",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 21:36:14 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": [\n        \"O campo payer é obrigatório.\",\n        \"O campo payee é obrigatório.\",\n        \"O campo value é obrigatório.\"\n    ],\n    \"response_code\": 333\n}"
-						},
-						{
-							"name": "422 - Validation",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "payer",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "payee",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "value",
-											"value": "100",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Unprocessable Content",
-							"code": 422,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 21:39:54 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": [\n        \"O campo payer deve ser diferente de payee.\"\n    ],\n    \"response_code\": 333\n}"
-						},
-						{
-							"name": "404 - Service External",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "payer",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "payee",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "value",
-											"value": "100",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 22:33:56 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": \"O serviço externo não autorizou a execução da transferência.\",\n    \"response_code\": 333\n}"
-						},
-						{
-							"name": "404 - Profile User",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "payer",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "payee",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "value",
-											"value": "100",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 23:29:50 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": \"Apenas usuários com o respectivo perfil podem executar transferências.\",\n    \"response_code\": 333\n}"
-						},
-						{
-							"name": "404 - Balance Sufficient",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "payer",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "payee",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "value",
-											"value": "100",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 23:31:04 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": \"Saldo insuficiente para realizar a transferência.\",\n    \"response_code\": 333\n}"
-						},
-						{
-							"name": "404 - Notify",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "payer",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "payee",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "value",
-											"value": "100",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 03 Apr 2025 00:17:22 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": \"Erro ao notificar pagamento, transferência estornada.\",\n    \"response_code\": 333\n}"
-						},
-						{
-							"name": "201 - Created",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "payer",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "payee",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "value",
-											"value": "100",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{base_url}}transfer",
-									"host": [
-										"{{base_url}}transfer"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "127.0.0.1:8000"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.12"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 03 Apr 2025 00:16:07 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"response\": {\n        \"value\": \"R$ 1,00\",\n        \"sender\": \"Erick\",\n        \"receiver\": \"Erick\"\n    },\n    \"response_code\": 111\n}"
 						}
 					]
 				},
 				{
-					"name": "Notify",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "https://util.devi.tools/api/v1/notify",
-							"protocol": "https",
-							"host": [
-								"util",
-								"devi",
-								"tools"
-							],
-							"path": [
-								"api",
-								"v1",
-								"notify"
-							]
-						}
-					},
-					"response": [
+					"name": "Transfers",
+					"item": [
 						{
-							"name": "504 - Error",
-							"originalRequest": {
+							"name": "Send",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvcmVnaXN0ZXIiLCJpYXQiOjE3NDM3MjY4NjcsImV4cCI6MTc0MzczMDQ2NywibmJmIjoxNzQzNzI2ODY3LCJqdGkiOiJDVnUyNUU3R3pPVmhxNzkxIiwic3ViIjoiMTUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Jc0bUOz_4tcA-NPpgxE3m3GQs8IwFmgJNQqcr7oQ3vw",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "payer",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "payee",
+											"value": "16",
+											"type": "text"
+										},
+										{
+											"key": "value",
+											"value": "100",
+											"type": "text"
+										}
+									]
+								},
 								"url": {
-									"raw": "https://util.devi.tools/api/v1/notify",
-									"protocol": "https",
+									"raw": "{{base_url}}transfer",
 									"host": [
-										"util",
-										"devi",
-										"tools"
-									],
-									"path": [
-										"api",
-										"v1",
-										"notify"
+										"{{base_url}}transfer"
 									]
 								}
 							},
-							"status": "Gateway Timeout",
-							"code": 504,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Server",
-									"value": "nginx/1.17.6"
+									"name": "422 - Validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 21:36:14 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": [\n        \"O campo payer é obrigatório.\",\n        \"O campo payee é obrigatório.\",\n        \"O campo value é obrigatório.\"\n    ],\n    \"response_code\": 333\n}"
 								},
 								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 22:36:46 GMT"
+									"name": "422 - Validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "payer",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "payee",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "value",
+													"value": "100",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 21:39:54 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": [\n        \"O campo payer deve ser diferente de payee.\"\n    ],\n    \"response_code\": 333\n}"
 								},
 								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
+									"name": "404 - Service External",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "payer",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "payee",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "value",
+													"value": "100",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 22:33:56 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": \"O serviço externo não autorizou a execução da transferência.\",\n    \"response_code\": 333\n}"
 								},
 								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
+									"name": "404 - Profile User",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "payer",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "payee",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "value",
+													"value": "100",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 23:29:50 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": \"Apenas usuários com o respectivo perfil podem executar transferências.\",\n    \"response_code\": 333\n}"
 								},
 								{
-									"key": "Connection",
-									"value": "keep-alive"
+									"name": "404 - Balance Sufficient",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "payer",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "payee",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "value",
+													"value": "100",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 23:31:04 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": \"Saldo insuficiente para realizar a transferência.\",\n    \"response_code\": 333\n}"
 								},
 								{
-									"key": "X-HTTP-Status-Cat",
-									"value": "https://http.cat/status/504"
+									"name": "404 - Notify",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "payer",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "payee",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "value",
+													"value": "100",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 03 Apr 2025 00:17:22 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": \"Erro ao notificar pagamento, transferência estornada.\",\n    \"response_code\": 333\n}"
 								},
 								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=31536000"
+									"name": "201 - Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "payer",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "payee",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "value",
+													"value": "100",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}transfer",
+											"host": [
+												"{{base_url}}transfer"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 03 Apr 2025 00:16:07 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"response\": {\n        \"value\": \"R$ 1,00\",\n        \"sender\": \"Erick\",\n        \"receiver\": \"Erick\"\n    },\n    \"response_code\": 111\n}"
 								}
-							],
-							"cookie": [],
-							"body": "{\n    \"status\": \"error\",\n    \"message\": \"The service is not available, try again later\"\n}"
+							]
 						},
 						{
-							"name": "204 - Success",
-							"originalRequest": {
+							"name": "Notify",
+							"request": {
 								"method": "POST",
 								"header": [],
 								"url": {
@@ -1451,37 +1521,116 @@
 									]
 								}
 							},
-							"status": "No Content",
-							"code": 204,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Server",
-									"value": "nginx/1.17.6"
+									"name": "504 - Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "https://util.devi.tools/api/v1/notify",
+											"protocol": "https",
+											"host": [
+												"util",
+												"devi",
+												"tools"
+											],
+											"path": [
+												"api",
+												"v1",
+												"notify"
+											]
+										}
+									},
+									"status": "Gateway Timeout",
+									"code": 504,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.17.6"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 22:36:46 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-HTTP-Status-Cat",
+											"value": "https://http.cat/status/504"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"error\",\n    \"message\": \"The service is not available, try again later\"\n}"
 								},
 								{
-									"key": "Date",
-									"value": "Wed, 02 Apr 2025 22:37:10 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "X-HTTP-Status-Cat",
-									"value": "https://http.cat/status/204"
-								},
-								{
-									"key": "Strict-Transport-Security",
-									"value": "max-age=31536000"
+									"name": "204 - Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "https://util.devi.tools/api/v1/notify",
+											"protocol": "https",
+											"host": [
+												"util",
+												"devi",
+												"tools"
+											],
+											"path": [
+												"api",
+												"v1",
+												"notify"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.17.6"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 02 Apr 2025 22:37:10 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "X-HTTP-Status-Cat",
+											"value": "https://http.cat/status/204"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000"
+										}
+									],
+									"cookie": [],
+									"body": null
 								}
-							],
-							"cookie": [],
-							"body": null
+							]
 						}
 					]
 				}

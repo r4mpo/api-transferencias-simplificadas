@@ -6,7 +6,7 @@ namespace App\Swagger\Transfers;
  * @OA\Post(
  *     path="/transfer",
  *     summary="Realiza uma transferência entre usuários",
- *     tags={"Transferências"},
+ *     tags={"Operações"},
  *     security={{"bearerAuth": {}}},
  *     @OA\RequestBody(
  *         required=true,

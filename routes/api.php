@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Operations\TransfersController;
+use App\Http\Controllers\Operations\Stratuns\StratunsController;
+use App\Http\Controllers\Operations\Transfers\TransfersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 
@@ -15,4 +16,5 @@ Route::controller(AuthController::class)->prefix('user')->group(function () {
 
 Route::middleware(['token'])->group(function () {
     Route::post('transfer', [TransfersController::class, 'send']);
+    Route::get('stratuns', [StratunsController::class, 'find']);
 });
